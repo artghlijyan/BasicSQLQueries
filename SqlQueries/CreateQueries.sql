@@ -1,5 +1,4 @@
-﻿--Primary Key
----------------------------
+﻿---------------------------
 CREATE TABLE Customers
 (
     Id INT PRIMARY KEY,
@@ -29,6 +28,7 @@ CREATE TABLE OrderLines
     Price MONEY,
     PRIMARY KEY(OrderId, ProductId)
 )
+
 ---------------------------
 --IDENTITY
 CREATE TABLE Customers
@@ -41,6 +41,7 @@ CREATE TABLE Customers
     Phone VARCHAR(20)
 )
 -- IDENTITY(seed, increment), seed - initail value, increment - jump value
+
 ---------------------------
 --UNIQUE
 CREATE TABLE Customers
@@ -63,6 +64,7 @@ CREATE TABLE Customers
     Phone VARCHAR(20),
     UNIQUE(Email, Phone)
 )
+
 ---------------------------
 --DEFAULT with CHECK
 CREATE TABLE Customers
@@ -85,6 +87,7 @@ CREATE TABLE Customers
     Phone VARCHAR(20) UNIQUE,
     CHECK((Age >0 AND Age<100) AND (Email !='') AND (Phone !=''))
 )
+
 ---------------------------
 --CONSTRAINT(for constraints is used PRIMARY KEY, UNIQUE, DEFAULT, CHECK)
 --PK_ - Primary key
@@ -117,6 +120,7 @@ CREATE TABLE Customers
     CONSTRAINT UQ_Customer_Email UNIQUE (Email),
     CONSTRAINT UQ_Customer_Phone UNIQUE (Phone)
 )
+
 ---------------------------
 --FOREIGN KEY
 CREATE TABLE Customers
@@ -143,6 +147,7 @@ CREATE TABLE Orders
     CreatedAt Date,
     CONSTRAINT FK_Orders_To_Customers FOREIGN KEY (CustomerId)  REFERENCES Customers (Id)
 )
+
 ---------------------------
 --ON DELETE, ON UPDATE
 CREATE TABLE Orders
@@ -153,6 +158,5 @@ CREATE TABLE Orders
     FOREIGN KEY (CustomerId) REFERENCES Customers (Id) ON DELETE CASCADE --(NO ACTION, SET NULL, SET DEFAULT)
                                                        ON UPDATE CASCADE --(NO ACTION, SET NULL, SET DEFAULT)
 )
---
 
 
